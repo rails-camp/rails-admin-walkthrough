@@ -11,6 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160122171601) do
+
+  create_table "post_tags", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "post_tags", ["post_id"], name: "index_post_tags_on_post_id"
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "author"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.boolean  "published_status"
+  end
 
 end
